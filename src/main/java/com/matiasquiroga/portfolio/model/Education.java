@@ -16,7 +16,7 @@ import java.util.Date;
 public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long eid;
     private String edu_title;
     private String edu_institution;
     @Temporal(TemporalType.DATE)
@@ -25,5 +25,6 @@ public class Education {
     private Date date_end;
     @Column(name = "edu_logoUrl", length = 2048)
     private String edu_logoUrl;
+
 
 }
