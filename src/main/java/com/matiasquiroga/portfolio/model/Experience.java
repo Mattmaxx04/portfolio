@@ -25,7 +25,7 @@ public class Experience {
     private Date date_end;
     @Column(name = "company_logoUrl", length = 2048)
     private String company_logoUrl;
-    @Column(name = "experience_description", length = 500)
+    @Column(name = "experience_description", length = 1000)
     private String experience_description;
 
 }

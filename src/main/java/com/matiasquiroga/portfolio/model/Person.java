@@ -5,12 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +17,7 @@ import java.util.List;
 public class Person {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String lastname;
@@ -34,19 +30,23 @@ public class Person {
     @Column(name = "img_url", length = 2048)
     private String img_url;
 
-    @OneToMany(targetEntity = Education.class,cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Education.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "ed_fk", referencedColumnName = "id")
     private List<Education> educations;
-    @OneToMany(targetEntity = Skill.class,cascade = CascadeType.ALL)
+
+    @OneToMany(targetEntity = Skill.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "sk_fk", referencedColumnName = "id")
     private List<Skill> skillList;
-    @OneToMany(targetEntity = Soft.class,cascade = CascadeType.ALL)
+
+    @OneToMany(targetEntity = Soft.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "sf_fk", referencedColumnName = "id")
     private List<Soft> softList;
-    @OneToMany(targetEntity = Experience.class,cascade = CascadeType.ALL)
+
+    @OneToMany(targetEntity = Experience.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "ex_fk", referencedColumnName = "id")
     private List<Experience> experiences;
-    @OneToMany(targetEntity = Project.class,cascade = CascadeType.ALL)
+
+    @OneToMany(targetEntity = Project.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "pr_fk", referencedColumnName = "id")
     private List<Project> projects;
 

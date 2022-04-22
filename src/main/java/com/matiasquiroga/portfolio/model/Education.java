@@ -14,6 +14,7 @@ import java.util.Date;
 @ToString
 @Entity
 public class Education {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eid;

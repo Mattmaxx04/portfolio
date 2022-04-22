@@ -30,16 +30,18 @@ public class PersonController {
     private ExperienceRepository experienceRepository;
 
     @PostMapping("/add")
-    public Person placeOrder(@RequestBody PersonRequest request){
+    public Person addPerson(@RequestBody PersonRequest request)
+    {
         return personRepository.save(request.getPerson());
     }
+
     @GetMapping("/all")
-    public List<Person> findAllPerson(){
+    public List<Person> findAllPerson() {
         return personRepository.findAll();
     }
 
     @PutMapping("/update")
-    public Person updatePerson(@RequestBody PersonUpdate update){
+    public Person updatePerson(@RequestBody PersonUpdate update) {
         return personRepository.save(update.getPerson());
     }
 
@@ -47,7 +49,7 @@ public class PersonController {
     public Map<String, Boolean> deletePerson(
             @PathVariable(value = "id") Long id) throws Exception {
         Person person = personRepository.findById(id)
-                .orElseThrow(() -> new IdNotFoundException("Person not found on :: "+ id));
+                .orElseThrow(() -> new IdNotFoundException("Person not found on :: " + id));
         personRepository.delete(person);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
